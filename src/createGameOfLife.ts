@@ -21,7 +21,7 @@ export function createGameOfLife(
 
   // Создать блок для поля
   // Создать кнопку управления игрой
-  htmlElement.innerHTML = `<div class="field-wrapper"></div><button>Start</button><input></input>`;
+  htmlElement.innerHTML = `<div class="field-wrapper"></div><button>Start</button><input type="range" value="1000" min="100" max="1000" step="50"></input><label>speed</label>`;
   const fieldWrapper = htmlElement.querySelector(".field-wrapper");
   const button = htmlElement.querySelector("button");
 
