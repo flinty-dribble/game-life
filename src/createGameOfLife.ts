@@ -17,7 +17,7 @@ export function createGameOfLife(
   htmlElement: HTMLElement
 ) {
   let gameIsRunning = false;
-  let timer: NodeJS.Timeout;
+  let timer: number;
 
   // Создать блок для поля
   // Создать кнопку управления игрой
@@ -58,7 +58,7 @@ export function createGameOfLife(
     let inputValue = +input!.value;
 
     // - запустить таймер для обновления поля
-    timer = setInterval(() => {
+    timer = window.setInterval(() => {
       // В таймере обновления поля
       // - посчитать новое состояние поля
       // - отрисовать новое состояние поля

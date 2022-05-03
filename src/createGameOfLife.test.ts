@@ -12,14 +12,14 @@ const sleep = (x: number) => new Promise((resolve) => setTimeout(resolve, x));
 
 describe("createGameOfLife", () => {
   let element: HTMLElement;
-  const originalAlert = window.alert;
+  let originalAlert = jest.spyOn(window, "alert");
   beforeEach(() => {
     element = document.createElement("div");
-    window.alert = jest.fn();
+    originalAlert = jest.fn();
   });
   afterEach(() => {
     jest.resetAllMocks();
-    window.alert = originalAlert;
+    originalAlert = jest.spyOn(window, "alert");
   });
   describe("UI", () => {
     it("creates Start button and field", () => {

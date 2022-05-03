@@ -32,12 +32,12 @@ export function drawField(htmlElement, field, onCellClick) {
   htmlElement.innerHTML = table;
 
   htmlElement.querySelector("table")!.addEventListener("click", (ev: Event) => {
-    const clickedElement = ev.target;
-    // @ts-ignore
-    const x = clickedElement.getAttribute("data-x");
-    // @ts-ignore
-    const y = clickedElement.getAttribute("data-y");
-    if (x >= 0 && y >= 0) {
+    const clickedElement = ev.target as HTMLTableElement;
+
+    const x = clickedElement!.getAttribute("data-x");
+
+    const y = clickedElement!.getAttribute("data-y");
+    if (Number(x) >= 0 && Number(y) >= 0) {
       onCellClick(Number(x), Number(y));
     }
   });
