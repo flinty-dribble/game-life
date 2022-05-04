@@ -59,7 +59,6 @@ export function createGameOfLife(
 
     const input = htmlElement.querySelector("input");
     let speed = +input!.value;
-    //let changeSpeed = speed;
     function speedValue() {
       clearInterval(timer);
       speed = +input!.value;
