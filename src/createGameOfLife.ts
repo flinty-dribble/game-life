@@ -47,6 +47,7 @@ export function createGameOfLife(
     // При клике на кнопке `Stop` остановить таймер
     clearInterval(timer);
   }
+
   function startGame() {
     // При клике по кнопке старт
     // - поменять надпись на `Stop`
@@ -54,11 +55,18 @@ export function createGameOfLife(
 
     button!.innerHTML = "Stop";
 
-    const input = htmlElement.querySelector("input");
-    let inputValue = +input!.value;
-
     // - запустить таймер для обновления поля
-    timer = window.setInterval(() => {
+
+    const input = htmlElement.querySelector("input");
+    let speed = +input!.value;
+    //let changeSpeed = speed;
+    function speedValue() {
+      clearInterval(timer);
+      speed = +input!.value;
+      timer = window.setInterval(interval, speed);
+    }
+
+    function interval() {
       // В таймере обновления поля
       // - посчитать новое состояние поля
       // - отрисовать новое состояние поля
@@ -72,7 +80,12 @@ export function createGameOfLife(
         alert("Death on the block");
         stopGame();
       }
-    }, inputValue);
+      if (speed != +input!.value) {
+        speedValue();
+      }
+    }
+
+    timer = window.setInterval(interval, speed);
   }
 
   button!.addEventListener("click", () => {
